@@ -1,17 +1,17 @@
 package com.cn.gao.bok.mapper;
 
-import com.cn.gao.bok.entity.UserInfo;
+import com.cn.gao.bok.entity.Userinfo;
 
-public interface UserInfoMapper {
+public interface UserinfoMapper {
     int deleteByPrimaryKey(String userid);
 
-    int insert(UserInfo record);
+    int insert(Userinfo record);
 
-    int insertSelective(UserInfo record);
+    int insertSelective(Userinfo record);
 
-    UserInfo selectByPrimaryKey(String userid);
+	Userinfo selectByPrimaryKey(String userid);
 
-    int updateByPrimaryKeySelective(UserInfo record);
+    int updateByPrimaryKeySelective(Userinfo record);
 
-    int updateByPrimaryKey(UserInfo record);
+    int updateByPrimaryKey(Userinfo record);
 }

@@ -1,49 +1,96 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cn.gao.bok.mapper.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.cn.gao.bok.entity.UserInfo" >
+<mapper namespace="com.cn.gao.bok.mapper.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.gao.bok.entity.Userinfo" >
     <id column="UserID" property="userid" jdbcType="VARCHAR" />
-    <result column="UserName" property="username" jdbcType="VARCHAR" />
-    <result column="UserTel" property="usertel" jdbcType="VARCHAR" />
+    <result column="Username" property="username" jdbcType="VARCHAR" />
+    <result column="PassWord" property="password" jdbcType="CHAR" />
+    <result column="Sex" property="sex" jdbcType="CHAR" />
+    <result column="Birthday" property="birthday" jdbcType="DATE" />
     <result column="Email" property="email" jdbcType="VARCHAR" />
-    <result column="Address" property="address" jdbcType="VARCHAR" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="CreateUserID" property="createuserid" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="DATE" />
+    <result column="UpdUserID" property="upduserid" jdbcType="VARCHAR" />
+    <result column="UpdDate" property="upddate" jdbcType="DATE" />
+    <result column="Reserve1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="Reserve2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="Reserve3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="Reserve4" property="reserve4" jdbcType="DATE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    UserID, UserName, UserTel, Email, Address
+    UserID, Username, PassWord, Sex, Birthday, Email, Remark, CreateUserID, CreateDate, 
+    UpdUserID, UpdDate, Reserve1, Reserve2, Reserve3, Reserve4
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from userinfo
+    from Userinfo
     where UserID = #{userid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from userinfo
+    delete from Userinfo
     where UserID = #{userid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.cn.gao.bok.entity.UserInfo" >
-    insert into userinfo (UserID, UserName, UserTel, 
-      Email, Address)
-    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{usertel,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.cn.gao.bok.entity.Userinfo" >
+    insert into Userinfo (UserID, Username, PassWord, 
+      Sex, Birthday, Email, Remark, 
+      CreateUserID, CreateDate, UpdUserID, 
+      UpdDate, Reserve1, Reserve2, 
+      Reserve3, Reserve4)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=CHAR}, 
+      #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createuserid,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, #{upduserid,jdbcType=VARCHAR}, 
+      #{upddate,jdbcType=DATE}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, 
+      #{reserve3,jdbcType=VARCHAR}, #{reserve4,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="com.cn.gao.bok.entity.UserInfo" >
-    insert into userinfo
+  <insert id="insertSelective" parameterType="com.cn.gao.bok.entity.Userinfo" >
+    insert into Userinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
         UserID,
       </if>
       <if test="username != null" >
-        UserName,
+        Username,
       </if>
-      <if test="usertel != null" >
-        UserTel,
+      <if test="password != null" >
+        PassWord,
+      </if>
+      <if test="sex != null" >
+        Sex,
+      </if>
+      <if test="birthday != null" >
+        Birthday,
       </if>
       <if test="email != null" >
         Email,
       </if>
-      <if test="address != null" >
-        Address,
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="createuserid != null" >
+        CreateUserID,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="upduserid != null" >
+        UpdUserID,
+      </if>
+      <if test="upddate != null" >
+        UpdDate,
+      </if>
+      <if test="reserve1 != null" >
+        Reserve1,
+      </if>
+      <if test="reserve2 != null" >
+        Reserve2,
+      </if>
+      <if test="reserve3 != null" >
+        Reserve3,
+      </if>
+      <if test="reserve4 != null" >
+        Reserve4,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -53,41 +100,111 @@
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="usertel != null" >
-        #{usertel,jdbcType=VARCHAR},
+      <if test="password != null" >
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="upduserid != null" >
+        #{upduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="upddate != null" >
+        #{upddate,jdbcType=DATE},
+      </if>
+      <if test="reserve1 != null" >
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+        #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+        #{reserve4,jdbcType=DATE},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cn.gao.bok.entity.UserInfo" >
-    update userinfo
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.gao.bok.entity.Userinfo" >
+    update Userinfo
     <set >
       <if test="username != null" >
-        UserName = #{username,jdbcType=VARCHAR},
+        Username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="usertel != null" >
-        UserTel = #{usertel,jdbcType=VARCHAR},
+      <if test="password != null" >
+        PassWord = #{password,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        Sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        Birthday = #{birthday,jdbcType=DATE},
       </if>
       <if test="email != null" >
         Email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        Address = #{address,jdbcType=VARCHAR},
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        CreateUserID = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="upduserid != null" >
+        UpdUserID = #{upduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="upddate != null" >
+        UpdDate = #{upddate,jdbcType=DATE},
+      </if>
+      <if test="reserve1 != null" >
+        Reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        Reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+        Reserve3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+        Reserve4 = #{reserve4,jdbcType=DATE},
       </if>
     </set>
     where UserID = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cn.gao.bok.entity.UserInfo" >
-    update userinfo
-    set UserName = #{username,jdbcType=VARCHAR},
-      UserTel = #{usertel,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.cn.gao.bok.entity.Userinfo" >
+    update Userinfo
+    set Username = #{username,jdbcType=VARCHAR},
+      PassWord = #{password,jdbcType=CHAR},
+      Sex = #{sex,jdbcType=CHAR},
+      Birthday = #{birthday,jdbcType=DATE},
       Email = #{email,jdbcType=VARCHAR},
-      Address = #{address,jdbcType=VARCHAR}
+      Remark = #{remark,jdbcType=VARCHAR},
+      CreateUserID = #{createuserid,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=DATE},
+      UpdUserID = #{upduserid,jdbcType=VARCHAR},
+      UpdDate = #{upddate,jdbcType=DATE},
+      Reserve1 = #{reserve1,jdbcType=VARCHAR},
+      Reserve2 = #{reserve2,jdbcType=VARCHAR},
+      Reserve3 = #{reserve3,jdbcType=VARCHAR},
+      Reserve4 = #{reserve4,jdbcType=DATE}
     where UserID = #{userid,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -1,8 +1,9 @@
 package com.cn.gao.bok.Service.Impl;
 
 import com.cn.gao.bok.Service.userInfoService;
-import com.cn.gao.bok.mapper.UserInfoMapper;
-import com.cn.gao.bok.entity.UserInfo;
+
+import com.cn.gao.bok.entity.Userinfo;
+import com.cn.gao.bok.mapper.UserinfoMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,10 +14,10 @@ import javax.annotation.Resource;
 public class userInfoServiceImpl implements userInfoService {
 
 	@Resource
-	UserInfoMapper userInfoMapper;
+	UserinfoMapper userInfoMapper;
 
 	@Override
-	public UserInfo selectByPk(String id) {
+	public Userinfo selectByPk(String id) {
 		return userInfoMapper.selectByPrimaryKey(id);
 	}
 }

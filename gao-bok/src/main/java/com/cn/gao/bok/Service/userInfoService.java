@@ -1,7 +1,8 @@
 package com.cn.gao.bok.Service;
 
-import com.cn.gao.bok.entity.UserInfo;
+
+import com.cn.gao.bok.entity.Userinfo;
 
 public interface userInfoService {
-	UserInfo selectByPk(String id);
+	Userinfo selectByPk(String id);
 }
