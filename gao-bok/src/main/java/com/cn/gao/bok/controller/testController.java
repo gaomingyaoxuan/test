@@ -1,7 +1,8 @@
 package com.cn.gao.bok.controller;
 
 import com.cn.gao.bok.Service.userInfoService;
-import com.cn.gao.bok.entity.UserInfo;
+import com.cn.gao.bok.entity.Userinfo;
+
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,8 @@ public class testController {
 	private StringRedisTemplate stringRedisTemplate;
 
 	@RequestMapping("testSpringBoot")
-	public UserInfo test(String id){
+	public Userinfo test(String id){
+		System.out.println("sssss");
 		return userinfoService.selectByPk(id);
 	}
 
